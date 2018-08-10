@@ -4,7 +4,7 @@ Machine Learning apporach to classifying TCP flow performance.
 
 ## Problem Definition
 
-1) What is the problem?
+### 1) What is the problem?
 
 #### Informal Description
 
@@ -26,7 +26,7 @@ correctly out of all flows considered as a percentage.
 
 
 
-2) Why does the problem need solved?
+### 2) Why does the problem need solved?
 
 - Identifying performance problems provides admins/engineers more accurate 
 insight into infrastructure ultilization and enables them to resolve the 
@@ -37,6 +37,6 @@ admins/engineers that helps them identify and resolve flow problems faster.
 - A solution to this problem could also be used to drive automated fixes to 
 discovered problems.
 
-3) How could the problem be solved manually (without AI)?
+### 3) How could the problem be solved manually (without AI)?
 
 - E.q. Previous XSight project solutions
