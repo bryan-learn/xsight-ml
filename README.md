@@ -45,23 +45,23 @@ discovered problems.
 
 ### 1) Data Selection
 
-*Available Data:*
+__Available Data:__
 
 Several months worth of Web10G metrics stored per-flow from two data transfer 
 nodes (DTNs). Most Web10G metrics will be used as features.
 
-*Unavailable Data:*
+__Unavailable Data:__
 
 A performance metric for every flow. We create synthetic data by calculating 
 throughput per-flow.
 
-*Excluded Data:*
+__Excluded Data:__
 
 Potentially some of the Web10G metrics.
 
 ### 2) Data Preprocessing
 
-*Formatting:*
+__Formatting:__
 
 The Available Data is in a time-series database, InfluxDB. The data needs to be
 queried and reformatted for ease of processing.
@@ -79,52 +79,52 @@ Application. InfluxDB is queried to pull all the selected feastures for each
 flow in the flat file. A CSV file is produced that maps each flow's selected 
 Web10G metrics to the performance class.
 
-*Cleaning:*
+__Cleaning:__
 
 There may be data instances that are incomplete or incorrect. Those instances should be mentioned here.
 
-*Sampling:*
+__Sampling:__
 
 We are starting by sampling only the SSH Application data from the Available Data.
 
 ### 3) Data Transformation
 
-*Scaling:*
+__Scaling:__
 
 The feature data will be scaled for better use in various algorithms. Numerical
 attributes will be scaled to values between -5 and 5.
 
-*Decomposition:*
+__Decomposition:__
 
 There may be features that represent a complex concept that may be more useful 
 to a machine learning method when split into the constituent parts.
 
-*Aggregation:*
+__Aggregation:__
 
 There may be features that can be aggregated into a single feature that would 
 be more meaningful to the problem you are trying to solve.
 
 ## Evaluate Various Algorithms
 
-*Test Harness:*
+__Test Harness:__
 
-*Performance Measure:*
+__Performance Measure:__
 
-*Test and Train Datasets:*
+__Test and Train Datasets:__
 
-*Cross Validation:*
+__Cross Validation:__
 
-*Testing Algorithms:*
+__Testing Algorithms:__
 
 ## Improving Results
 
-*Algorithm Tuning:*
+__Algorithm Tuning:__
 
-*Ensembles:*
+__Ensembles:__
 
 ## Presenting Results
 
-*Report:*
+__Report:__
 
 - Context
 - Problem
@@ -133,7 +133,7 @@ be more meaningful to the problem you are trying to solve.
 - Limitations
 - Conclusions
 
-*Operationalize:*
+__Operationalize:__
 
 - Algorithm Implementation (move from research to production)
 - Model Tests (write automated tests for model and data preparation)
