@@ -40,6 +40,9 @@ discovered problems.
 ### 3) How could the problem be solved manually (without AI)?
 
 - E.q. Previous XSight project solutions
+- Hard coded thresholds on metrics to signify poor performance. E.q. trigger 
+alert when packet loss hits certain percentage.
+
 
 ## Data Preparation
 
@@ -53,7 +56,7 @@ nodes (DTNs). Most Web10G metrics will be used as features.
 __Unavailable Data:__
 
 A performance metric for every flow. We create synthetic data by calculating 
-throughput per-flow.
+a modified Power metric per-flow.
 
 __Excluded Data:__
 
@@ -66,18 +69,24 @@ __Formatting:__
 The Available Data is in a time-series database, InfluxDB. The data needs to be
 queried and reformatted for ease of processing.
 
-For the synthetic performance data (labels), a script is used to pull 
-throughput metrics on a per-application basis. The statistics are summarized 
-and a histogram is created using Scott's Rule to determine bucket width. These 
-buckets are used as performance classes for the corresponding transfer 
-Application. The flows and their corresponding performance class are stored in 
-a flat file.
+We start by separating flows by size (find elephant and mice flows). A script is
+used to pull throughput metrics on a per-application basis. The statistics are 
+summarized and a histogram is created using Scott's Rule to determine bucket 
+width. These buckets are used as throughput classes for the corresponding 
+transfer Application. The flows and their corresponding throughput class are 
+stored in a flat file.
 
 For the Web10G metrics (features), a script is used to process the flat file 
-representing the synthetic performance data for a particular transfer 
-Application. InfluxDB is queried to pull all the selected feastures for each 
+representing the synthetic throughput class for a particular transfer 
+Application. InfluxDB is queried to pull all the selected features for each 
 flow in the flat file. A CSV file is produced that maps each flow's selected 
-Web10G metrics to the performance class.
+Web10G metrics to the throughput class.
+
+For the synthetic performance data (labels) we calculate a modified Power 
+metric. Power\* = log(mean throughput / mean 95th percentile delay)
+A script is used to read a CSV containing feature sets then calculate the Power
+metric for each flow.
+
 
 __Cleaning:__
 
